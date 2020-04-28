@@ -35,6 +35,11 @@
 						<option <?php selected( $orderby, 'asc' ); ?>value="asc"><?php _e( 'Ascending', 'search-regex' ); ?></option>
 						<option <?php selected( $orderby, 'desc' ); ?>value="desc"><?php _e( 'Descending', 'search-regex' ); ?></option>
 					</select>
+
+					<label style="margin-left: 5px;">
+						<strong><?php _e( 'Published only', 'search-regex' ) ?>: </strong>
+						<input type="checkbox" name="only_published_post" <?php checked( !empty( $_POST['only_published_post'] ) ); ?>/>
+					</label>
 				</td>
 			</tr>
 			<tr>

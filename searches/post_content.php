@@ -1,10 +1,23 @@
 <?php
 
 class SearchPostContent extends Search {
-	function find( $pattern, $limit, $offset, $orderby ) {
+	function find( $pattern, $limit, $offset, $orderby) {
 		global $wpdb;
+		
+		$where = "post_status != 'inherit'";
 
-		$sql = "SELECT ID, post_content, post_title FROM {$wpdb->posts} WHERE post_status != 'inherit' AND post_type IN ('post','page') ORDER BY ID ".$orderby;
+		// filter by post_status
+		// print_r($this->custom_options);
+		if(isset($this->custom_options['post_status'])) {
+			$post_status = $this->custom_options['post_status'];
+			switch($post_status) {
+				case 'publish':
+					$where = "post_status = 'publish'";
+					break;
+			}
+		}
+
+		$sql = "SELECT ID, post_content, post_title FROM {$wpdb->posts} WHERE $where AND post_type IN ('post','page') ORDER BY ID ".$orderby;
 
 		if ( $limit > 0 )
 			$sql .= $wpdb->prepare( " LIMIT %d,%d", $offset, $limit );

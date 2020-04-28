@@ -23,8 +23,6 @@
 		<?php endforeach; ?>
 		</ol>
 
-		<img src="<?php echo plugins_url( '/images/small.gif', $this->base_url() ); ?>" style="display: none" alt="pre"/>
-
 		<script type="text/javascript" charset="utf-8">
 			var re_text = new Array (), re_input = new Array (), re_replace = new Array (), re_text_replace = new Array ();
 
