@@ -12,7 +12,7 @@ class SearchPostContent extends Search {
 			$post_status = $this->custom_options['post_status'];
 			switch($post_status) {
 				case 'publish':
-					$where = "post_status = 'publish'";
+					$where = "post_status = 'publish' AND post_password = ''";
 					break;
 			}
 		}
