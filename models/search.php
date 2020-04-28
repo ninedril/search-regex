@@ -13,6 +13,8 @@ class Search
 	var $regex_error   = null;
 	var $regex         = false;
 
+	var $custom_options = [];
+
 	function set_regex_options( $dotall, $case, $multi)
 	{
 		$this->regex = true;
@@ -24,6 +26,14 @@ class Search
 
 		if( !empty( $multi))
 			$this->regex_options .= 'm';
+	}
+
+	function set_custom_options($option_array)
+	{
+		if (is_array($option_array)) {
+			$this->custom_options = array_merge($this->custom_options, $option_array);
+			// print_r($this->custom_options);
+		}
 	}
 
 	function regex_error( $errno, $errstr, $errfile, $errline)

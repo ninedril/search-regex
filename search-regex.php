@@ -80,6 +80,13 @@ class SearchRegex {
 				$searcher->set_regex_options( isset( $_POST['regex_dot'] ) ? $_POST['regex_dot'] : false, isset( $_POST['regex_case'] ) ? $_POST['regex_case'] : false, isset( $_POST['regex_multi'] ) ? $_POST['regex_multi'] : false );
 			}
 
+			// Set post status option
+			if ( isset( $_POST['only_published_post'] )) {
+				$searcher->set_custom_options([
+					'post_status' => 'publish'
+				]);
+			}
+
 			// Make sure no one sneaks in with a replace
 			if ( ! current_user_can( 'administrator' ) && ! current_user_can( 'search_regex_write' ) ) {
 				unset( $_POST['replace'] );
